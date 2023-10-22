@@ -1,20 +1,19 @@
 import sqlite3
 
-DB_PATH = "../todolist.sqlite"
+DB_PATH = "../todolist.db"
 
 QUERY_CREATE_TABLE_ACTIVITIES = """CREATE TABLE IF NOT EXISTS activities (
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
             name TEXT,
             description TEXT, 
-            date DATE,
-            start_time TIME,
-            end_time TIME,
+            date TEXT,
+            start_time TEXT,
+            end_time TEXT,
             status TEXT)"""
 
 QUERY_INSERT_TABLE_ACTIVITIES = """
     INSERT INTO activities(name, description, date, start_time, end_time, status)
-    VALUES
-"""
+    VALUES (?, ?, ?, ?, ?, ?)"""
 
 def create_connection(db_file) -> sqlite3.Connection:
     conn = None
@@ -23,13 +22,19 @@ def create_connection(db_file) -> sqlite3.Connection:
     return conn
 
 def execute_query(query : str, data : tuple = None) -> None:
-    conn = create_connection(DB_PATH)
-    cur = conn.cursor()
-    if data:
-        cur.execute(query, data)
-    else:
-        cur.execute(query)
-    conn.commit()
+    try:
+        conn = create_connection(DB_PATH)
+        cur = conn.cursor()
+        if data:
+            cur.execute(query, data)
+        else:
+            cur.execute(query)
+        conn.commit()
+    except sqlite3.Error as e:
+        print('ERRO: '+ str(e))
+    finally:
+        if conn:
+            conn.close()
 
 def select_from_table(table_name : str = None, custom_query : str = None) -> list[tuple]:
     conn = create_connection(DB_PATH)
@@ -45,7 +50,7 @@ def select_from_table(table_name : str = None, custom_query : str = None) -> lis
     return rows
 
 if __name__ == '__main__':
-    select_from_table(table_name='activities')
+    print(select_from_table(table_name='activities'))
 
 # ---------------  create ---------------
 #c.execute("INSERT INTO activities (name, description, date, start_time, end_time, status) VALUES ('Alberto', 'Banco de dados do tutorial', '2023-09-16', '09:00:00', '09:30:00', 'feito')")

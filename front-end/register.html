@@ -21,29 +21,31 @@
         <div class="forms">
             <h1 class="h1"> Nova tarefa </h1>
             <div class="formsContainer"> 
-                <form action="" class="form"> 
+                <form class="form" method="post"> 
                         <div class="inputContainer">
                             <label for="">Título da tarefa</label>
-                            <input type="text" placeholder="Digite o nome da tarefa"> 
+                            <input type="text" required id="descricao" placeholder="Digite o nome da tarefa"> 
                         </div>
                         <div class="form2">
                             <div class="inputContainer2">
                                 <label for=""> Nome do usuário</label>
-                                <input type="text" placeholder="Digite o nome do usuário"> 
+                                <input type="text" required id="nome" placeholder="Digite o nome do usuário"> 
                             </div>
                             <div class="inputContainer2">
                                 <label for=""> Data da tarefa</label>
-                                <input type="text" placeholder="Digite a data da tarefa"> 
+                                <input type="text" required id="data"
+                                placeholder="Digite a data da tarefa"> 
                             </div>
                         </div>
                         <div class="form2">
                             <div class="inputContainer2">
                                 <label for=""> Horário de início</label>
-                                <input type="text" placeholder="Digite o horário que a tarefa foi iniciada"> 
+                                <input type="text" id="inicio"
+                                placeholder="Digite o horário que a tarefa foi iniciada"> 
                             </div>
                             <div class="inputContainer2">
                                 <label for=""> Horário de Fim</label>
-                                <input type="text" placeholder="Digite o horário que a tarefa foi finalizada"> 
+                                <input type="text" id="fim" placeholder="Digite o horário que a tarefa foi finalizada"> 
                             </div>
                         </div>
                 </form>
@@ -66,7 +68,7 @@
                 </div>
         </div>
         <div class="buttonContainer">
-            <button class="submitButton">
+            <button class="submitButton" py-click="registrar_atividade()" type="submit">
                 <a class="linkButton" href="">
                     Adicionar
                 </a>
