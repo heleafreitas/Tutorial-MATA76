@@ -1,0 +1,5 @@
+packages = ["sqlite3"]
+
+[[fetch]]
+files = ["bd_tutorial.py" , "cadastro.py"]
+from = "../back-end/"

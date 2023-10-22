@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <title>ToDo - Cadastro</title>
+</head>
+<body>
+    <header class="headerSection"> 
+        <div class="headerContainer">
+            <img class="logo" src="./assets/logo.svg" alt="Logo">
+        </div>
+    </header>
+    <div class="formsSection"> 
+        <div class="forms">
+            <h1 class="h1"> Nova tarefa </h1>
+            <div class="formsContainer"> 
+                <form action="" class="form"> 
+                        <div class="inputContainer">
+                            <label for="">Título da tarefa</label>
+                            <input type="text" placeholder="Digite o nome da tarefa"> 
+                        </div>
+                        <div class="form2">
+                            <div class="inputContainer2">
+                                <label for=""> Nome do usuário</label>
+                                <input type="text" placeholder="Digite o nome do usuário"> 
+                            </div>
+                            <div class="inputContainer2">
+                                <label for=""> Data da tarefa</label>
+                                <input type="text" placeholder="Digite a data da tarefa"> 
+                            </div>
+                        </div>
+                        <div class="form2">
+                            <div class="inputContainer2">
+                                <label for=""> Horário de início</label>
+                                <input type="text" placeholder="Digite o horário que a tarefa foi iniciada"> 
+                            </div>
+                            <div class="inputContainer2">
+                                <label for=""> Horário de Fim</label>
+                                <input type="text" placeholder="Digite o horário que a tarefa foi finalizada"> 
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="captionsSection">
+                <div class="captionsContainer">
+                    <div class="caption">
+                        <img class="logo" src="./assets/Cor Categoria Vermelho.svg" alt="Categoria Vermelho">
+                        <p class="bThin"> Tarefa não iniciada</p>
+                    </div>
+                    <div class="caption">
+                        <img class="logo" src="./assets/Cor Categoria Amarelo.svg" alt="Categoria Amarela">
+                        <p class="bThin"> Tarefa iniciada</p>
+                    </div>
+                    <div class="caption">
+                        <img class="logo" src="./assets/Cor Categoria Verde.svg" alt="Categoria Verde">
+                        <p class="bThin"> Tarefa finalizada</p>
+                    </div>
+                </div>
+        </div>
+        <div class="buttonContainer">
+            <button class="submitButton">
+                <a class="linkButton" href="">
+                    Adicionar
+                </a>
+            </button>
+    </div>
+    <py-config src="../back-end/pyscript.toml">
+	</py-config>
+    <py-script src="../back-end/cadastro.py"></py-script>
+</body>
+</html>
