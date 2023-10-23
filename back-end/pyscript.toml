@@ -1,5 +1,0 @@
-packages = ["sqlite3"]
-
-[[fetch]]
-files = ["bd_tutorial.py" , "cadastro.py", "../todolist.db"]
-from = "../back-end/"
