@@ -66,14 +66,14 @@
                                     </button>
             
                                 <button class="endButton"> 
-                                    <a class="linkButtonEnd" href="">
+                                    <a class="linkButtonEnd" href="{{url_for('finalizar_tarefa', id=element['id'])}}">
                                         Finalizar
                                     </a>
                                 </button>
                                     <a class="" href="">
                                         <img class="" src="{{ url_for('static', filename='/assets/Lápis.svg') }}" alt="Icon Lápis">
                                     </a>
-                                    <a class="" href="">
+                                    <a class="" href="{{url_for('deletar_tarefa', id=element['id'])}}">
                                         <img class="" src= "{{ url_for('static', filename='/assets/Lixeira.svg') }}"  alt="Icon Lixeira">
                                     </a>
                             </div>

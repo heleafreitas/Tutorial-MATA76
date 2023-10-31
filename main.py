@@ -12,7 +12,23 @@ def home():
 @app.route('/iniciar_tarefa/<string:id>', methods=['POST','GET'])
 def iniciar_tarefa(id):
     identificador = int(id)
-    db.execute_query(f"UPDATE activities SET status='iniciada' WHERE id = {identificador}")
+    resposta = db.select_from_table(custom_query=f"SELECT status FROM activities WHERE id = {identificador}")
+    if resposta[0][0] == 'não iniciada':
+        db.execute_query(f"UPDATE activities SET status='iniciada' WHERE id = {identificador}")
+    return redirect(url_for('home'))
+
+@app.route('/finalizar_tarefa/<string:id>', methods=['POST','GET'])
+def finalizar_tarefa(id):
+    identificador = int(id)
+    resposta = db.select_from_table(custom_query=f"SELECT status FROM activities WHERE id = {identificador}")
+    if resposta[0][0] == 'iniciada':
+        db.execute_query(f"UPDATE activities SET status='finalizada' WHERE id = {identificador}")
+    return redirect(url_for('home'))
+
+@app.route('/deletar_tarefa/<string:id>', methods=['POST','GET'])
+def deletar_tarefa(id):
+    identificador = int(id)
+    db.execute_query(f"DELETE FROM activities WHERE id = {identificador}")
     return redirect(url_for('home'))
 
 @app.route('/irParaAdicionar', methods=['POST'])
