@@ -41,11 +41,13 @@
             <div class="titleContainer"> 
                 <div class="h1"> Sua lista de tarefas: </div>
                 <div class="buttonContainerAdd">
-                    <button class="addButton">
+                    <form action="irParaAdicionar" method="post">
+                    <button class="addButton" type="submit">
                         <a class="linkButtonAdd" href="">
                             <img class="" src= "{{ url_for('static', filename='/assets/Símbolo Adicionar.svg') }}" alt="Icon Adicionar">
                         </a>
                     </button>
+                </form>
                 </div>
             </div>
             {{id}}
@@ -57,13 +59,12 @@
                         <div class="taskBody"> 
                             <p class="h4"> {{element["tarefa"]}} </p>
                             <div class="options">
-                                <form action="iniciarTarefa" method="post">
-                                    <button class="startButton" name="id" value="{{element['id']}}" type="submit"> 
-                                            <a class="linkButtonStart" href="" >
-                                                Iniciar
-                                            </a>
+                                    <button class="startButton" type="submit"> 
+                                        <a class="linkButtonStart" href="{{url_for('iniciar_tarefa', id=element['id'])}}" >
+                                            Iniciar
+                                        </a>
                                     </button>
-                                </form>
+            
                                 <button class="endButton"> 
                                     <a class="linkButtonEnd" href="">
                                         Finalizar
