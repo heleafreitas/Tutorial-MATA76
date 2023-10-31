@@ -31,9 +31,33 @@ def deletar_tarefa(id):
     db.execute_query(f"DELETE FROM activities WHERE id = {identificador}")
     return redirect(url_for('home'))
 
+@app.route('/editar_tarefa/<string:id>', methods=['POST','GET'])
+def editar_tarefa(id):
+    identificador = int(id)
+    resposta = db.select_from_table(custom_query=f"SELECT id, name, description, date FROM activities WHERE id = {identificador}")
+    id = resposta[0][0]
+    nome = resposta[0][1]
+    descricao = resposta[0][2]
+    data = resposta[0][3]
+    return render_template('update.html', nome=nome, descricao=descricao, data=data, id=id)
+
+@app.route('/atualizar/<string:id>', methods=['POST','GET'])
+def atualizar(id):
+    descricao = request.form['descricao']
+    nome = request.form['nome']
+    data = request.form['data']
+
+    if descricao != '':
+         db.execute_query(f"UPDATE activities SET description='{descricao}' WHERE id = {int(id)}")
+    if nome != '':
+         db.execute_query(f"UPDATE activities SET name='{nome}' WHERE id = {int(id)}")
+    if data != '':
+         db.execute_query(f"UPDATE activities SET date='{data}' WHERE id = {int(id)}")
+
+    return redirect(url_for('home'))
+
 @app.route('/irParaAdicionar', methods=['POST'])
 def irParaAdicionar():
-    print('CLICOU')
     return redirect(url_for('registrar_atividade'))
 
 def listarTarefas():

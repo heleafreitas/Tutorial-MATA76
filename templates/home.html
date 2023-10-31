@@ -70,7 +70,7 @@
                                         Finalizar
                                     </a>
                                 </button>
-                                    <a class="" href="">
+                                    <a class="" href="{{url_for('editar_tarefa', id=element['id'])}}">
                                         <img class="" src="{{ url_for('static', filename='/assets/Lápis.svg') }}" alt="Icon Lápis">
                                     </a>
                                     <a class="" href="{{url_for('deletar_tarefa', id=element['id'])}}">
