@@ -82,17 +82,6 @@ def adicionar_tarefa():
     inicio = 'null'
     fim = 'null'
     status = 'não iniciada'
-
-    # if inicio == ' ' or not inicio:
-    #     inicio = 'null'
-    # else:
-    #     status = 'iniciada'
-    
-    # if fim == ' ' or not fim:
-    #     fim = 'null'
-    # else:
-    #     status = 'finalizada'
-
     values = (nome, descricao, data, inicio, fim, status)
 
     db.execute_query(query=db.QUERY_INSERT_TABLE_ACTIVITIES, data=values)
