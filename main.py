@@ -68,10 +68,6 @@ def atualizar(id):
 
 @app.route('/irParaAdicionar', methods=['POST'])
 def irParaAdicionar():
-    return redirect(url_for('registrar_atividade'))
-
-@app.route('/register')
-def registrar_atividade():
     return render_template('register.html')
 
 @app.route('/adicionar_tarefa', methods=['POST'])
